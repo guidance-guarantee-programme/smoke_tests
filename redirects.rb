@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'bundler/setup'
 require 'faraday'
 
@@ -12,11 +14,13 @@ def test_redirect(url, expected_location)
   puts "#{url} redirects to #{expected_location}"
 
   if actual_status != expected_status
-    throw "Expected #{expected_status}, got #{actual_status}"
+    puts "Expected #{expected_status}, got #{actual_status}"
+    exit 1
   end
 
   if actual_location != expected_location
-    throw "Expected #{expected_location}, got #{actual_location}"
+    puts "Expected #{expected_location}, got #{actual_location}"
+    exit 1
   end
 end
 
