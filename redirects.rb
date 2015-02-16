@@ -1,22 +1,23 @@
 require 'bundler/setup'
 require 'faraday'
 
-def test_redirect(url, location, status = 301)
+def test_redirect(url, expected_location)
   response = Faraday.get(url)
+
+  expected_status = 301
+
   actual_status = response.status
   actual_location = response.headers[:location]
 
-  puts "#{url} redirects to #{location}"
+  puts "#{url} redirects to #{expected_location}"
 
-  if actual_status != status
-    throw "Expected #{status}, got #{actual_status}"
+  if actual_status != expected_status
+    throw "Expected #{expected_status}, got #{actual_status}"
   end
 
-  if actual_location != location
-    throw "Expected #{location}, got #{actual_location}"
+  if actual_location != expected_location
+    throw "Expected #{expected_location}, got #{actual_location}"
   end
-
-  true
 end
 
 test_redirect 'http://pensionwise.gov.uk/', 'https://pensionwise.gov.uk/'
