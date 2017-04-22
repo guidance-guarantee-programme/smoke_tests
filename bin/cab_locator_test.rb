@@ -44,7 +44,7 @@ end
 
 page = page.link_with(dom_class: 't-location-link').click
 
-if page.body =~ /Wokingham/
+if page.body =~ /Reading/
   puts '> Renders location'
 else
   raise 'Should render location'
