@@ -22,20 +22,14 @@ else
   raise 'Should render location finder'
 end
 
-form = page.form_with(action: '/locations')
-form['postcode'] = 'LONDON'
-page = form.submit(form.buttons.first)
-
+page = mech.get("#{domain}/locations?postcode=LONDON")
 if page.body =~ /is not a valid postcode/
   puts '> Renders invalid postcode message'
 else
   raise 'Should render invalid postcode message'
 end
 
-form = page.form_with(action: '/locations')
-form['postcode'] = 'RG2 9AF'
-page = form.submit(form.buttons.first)
-
+page = mech.get("#{domain}/locations?postcode=rg29af")
 if page.body =~ /Appointment locations near/
   puts '> Renders locations'
 else
