@@ -8,53 +8,57 @@ domain = ARGV[0]
 staging = domain =~ /staging/
 production = !staging
 pages = %w(
-  /
-  /adjustable-income
-  /appointments
-  /benefits
-  /browse/illness-and-death
-  /browse/more
-  /browse/taking-your-pension-money
-  /browse/tax-and-getting-advice
-  /browse/your-pension-details
-  /care-costs
-  /transfer-pension
-  /contact
-  /cookies
-  /cymraeg
-  /debt
-  /divorce
-  /financial-advice
-  /guaranteed-income
-  /leave-pot-untouched
-  /living-abroad
-  /locations
-  /locations/15fd41b2-439a-448a-b775-b2b61e16d4bb
-  /making-money-last
-  /mix-options
-  /pension-complaints
-  /pension-pot-options
-  /pension-pot-value
-  /pension-types
-  /privacy
-  /protection
-  /scams
-  /selling-your-annuity
-  /shop-around
-  /take-cash-in-chunks
-  /take-whole-pot
-  /tax
-  /when-you-die
-  /work-out-income
+  /en
+  /en/telephone-appointments/new
+  /en/locations/a801a72d-91be-4a33-86a6-3d652cfc00d0/booking-request/step-one
+  /en/adjustable-income
+  /en/appointments
+  /en/benefits
+  /en/browse/illness-and-death
+  /en/browse/more
+  /en/browse/taking-your-pension-money
+  /en/browse/tax-and-getting-advice
+  /en/browse/your-pension-details
+  /en/care-costs
+  /en/transfer-pension
+  /en/contact
+  /en/cookies
+  /en/debt
+  /en/divorce
+  /en/financial-advice
+  /en/guaranteed-income
+  /en/leave-pot-untouched
+  /en/living-abroad
+  /en/locations
+  /en/locations/15fd41b2-439a-448a-b775-b2b61e16d4bb
+  /en/making-money-last
+  /en/mix-options
+  /en/pension-complaints
+  /en/pension-pot-options
+  /en/pension-pot-value
+  /en/pension-types
+  /en/privacy
+  /en/protection
+  /en/scams
+  /en/selling-your-annuity
+  /en/shop-around
+  /en/take-cash-in-chunks
+  /en/take-whole-pot
+  /en/tax
+  /en/when-you-die
+  /en/work-out-income
+  /cy/selling-your-annuity
+  /cy/shop-around
+  /cy/take-cash-in-chunks
+  /cy/take-whole-pot
+  /cy/tax
+  /cy/when-you-die
+  /cy/work-out-income
 )
 
 puts ">> Checking #{domain} at #{Time.now}"
 
 conn = Faraday.new(domain)
-
-if staging && ENV['AUTH_USERNAME'] && ENV['AUTH_PASSWORD']
-  conn.basic_auth( ENV['AUTH_USERNAME'], ENV['AUTH_PASSWORD'])
-end
 
 for page in pages do
   puts page
