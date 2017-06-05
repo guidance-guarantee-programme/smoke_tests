@@ -26,7 +26,7 @@ form['user[password]'] = password
 
 page = form.submit(form.buttons.first)
 
-if page.body =~ /Create appointment summary/
+if page.body =~ /Summary Document Generator/
   puts '> Renders logged in view'
 else
   raise 'Should be logged in'
