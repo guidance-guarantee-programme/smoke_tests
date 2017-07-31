@@ -68,7 +68,7 @@ for page in pages do
     raise "Status code was #{response.status}"
   end
 
-  if production
+  if production && response.headers['expires']
     unless DateTime.parse(response.headers['expires']).to_time > Time.now
       raise "Expires at #{response.headers['expires']}"
     end
